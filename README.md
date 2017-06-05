@@ -1,6 +1,6 @@
-terraform-cloudhealth-iam Terraform module
+CloudHealth Technologies Terraform module for CloudHealth IAM Role AWS account.
 ==================
-Manages installation of the CloudHealth IAM role in AWS account.
+Manages installation of CloudHealth IAM Role in your AWS account.
 
 
 Inputs
@@ -29,7 +29,7 @@ Inputs
   <tr>
     <td><tt>automated-ri-modification-enabled</tt></td>
     <td>Boolean</td>
-    <td>Additional permissions for enabling automated ri modification (default: false)</td>
+    <td>Additional permissions for enabling automated RI modification (default: false)</td>
   </tr>
   <tr>
     <td><tt>automated-actions-enabled</tt></td>
@@ -93,6 +93,17 @@ module "cloudhealth-iam-role" {
 }
 POLICY
 }
+```
+
+Run terraform pland and apply
+```bash
+terraform plan -target=module.cloudhealth-iam-role
+terraform apply -target=module.cloudhealth-iam-role
+```
+
+Get created ARN and External ID to use in CHT portal
+```bash
+terraform output -module=cloudhealth-iam-role
 ```
 
 
