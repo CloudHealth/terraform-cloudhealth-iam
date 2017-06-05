@@ -69,7 +69,7 @@ Obtain your External ID from the CloudHealth platform under new AWS account setu
 
 Define invokation of TF module
 
-```json
+```
 module "cloudhealth-iam-role" {
     source  = "github.com/CloudHealth/terraform-cloudhealth-iam/role"
     external-id = "1234567890abcdefg"
@@ -95,7 +95,7 @@ POLICY
 }
 ```
 
-Run terraform pland and apply
+Run terraform plan and apply
 ```bash
 terraform plan -target=module.cloudhealth-iam-role
 terraform apply -target=module.cloudhealth-iam-role
