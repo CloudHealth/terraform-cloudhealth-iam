@@ -1,6 +1,6 @@
-CloudHealth Technologies Terraform module for CloudHealth IAM Role AWS account.
+CloudHealth Technologies Terraform module for CloudHealth IAM Role AWS account provisioning.
 ==================
-Manages installation of CloudHealth IAM Role in your AWS account.
+This module manages installation of CloudHealth IAM Role in your AWS account.
 
 
 Inputs
@@ -83,8 +83,7 @@ module "cloudhealth-iam-role" {
   "Statement": [
     {
       "Action": [
-        "ec2:CreateTags",
-        "ec2:DescribeTags"
+        "ec2:CreateTags"
       ],
       "Effect": "Allow",
       "Resource": "*"
