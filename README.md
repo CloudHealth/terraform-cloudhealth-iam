@@ -84,7 +84,8 @@ module "cloudhealth-iam-role" {
    ],
    "Effect": "Allow",
    "Resource": "*"
-}POLICY
+}
+POLICY
 }
 ```
 
