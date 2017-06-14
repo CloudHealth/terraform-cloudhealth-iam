@@ -22,9 +22,19 @@ Inputs
     <td>S3 bucket location for consolidated accounts billing data (optional)</td>
   </tr>
   <tr>
+    <td><tt>s3-cur-bucket</tt></td>
+    <td>String</td>
+    <td>S3 bucket location for consolidated accounts cost and usage data (optional)</td>
+  </tr>
+  <tr>
     <td><tt>s3-cloudtrail-bucket</tt></td>
     <td>String</td>
     <td>S3 bucket location for Cloudtrail data (optional)</td>
+  </tr>
+  <tr>
+    <td><tt>s3-config-bucket</tt></td>
+    <td>String</td>
+    <td>S3 bucket location for AWS Config data (optional)</td>
   </tr>
   <tr>
     <td><tt>automated-ri-modification-enabled</tt></td>

@@ -14,6 +14,14 @@ variable "s3-cloudtrail-bucket" {
   default = ""
 }
 
+variable "s3-cur-bucket" {
+  default = ""
+}
+
+variable "s3-config-bucket" {
+  default = ""
+}
+
 variable "automated-ri-modification-enabled" {
   default = false
 }
