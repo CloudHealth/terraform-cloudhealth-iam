@@ -79,18 +79,12 @@ module "cloudhealth-iam-role" {
     automated-actions-enabled = true
     additional-policy = <<POLICY
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "ec2:CreateTags"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}
-POLICY
+   "Action": [
+     "ec2:CreateTags"
+   ],
+   "Effect": "Allow",
+   "Resource": "*"
+}POLICY
 }
 ```
 
