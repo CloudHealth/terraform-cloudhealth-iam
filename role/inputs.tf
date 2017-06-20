@@ -76,9 +76,7 @@ variable "default-readonly-policy" {
         "elasticmapreduce:List*",
         "elasticfilesystem:DescribeFileSystems",
         "elasticfilesystem:DescribeTags",
-        "es:DescribeElasticsearchDomain",
-        "es:DescribeElasticsearchDomains",
-        "es:DescribeElasticsearchDomainConfig",
+        "es:Describe*",
         "es:ListTags",
         "iam:List*",
         "iam:Get*",
@@ -138,4 +136,3 @@ variable "default-actions-policy" {
       "Resource": "*"
     }POLICY
 }
-
