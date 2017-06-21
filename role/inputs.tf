@@ -77,7 +77,7 @@ variable "default-readonly-policy" {
         "elasticfilesystem:DescribeFileSystems",
         "elasticfilesystem:DescribeTags",
         "es:Describe*",
-        "es:ListTags",
+        "es:List*",
         "iam:List*",
         "iam:Get*",
         "iam:GenerateCredentialReport",
