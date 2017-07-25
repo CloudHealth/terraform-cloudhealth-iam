@@ -77,7 +77,7 @@ Usage
 -----
 Obtain your External ID from the CloudHealth platform under new AWS account setup page.
 
-Define invokation of TF module
+Define invocation of TF module
 
 ```
 module "cloudhealth-iam-role" {
