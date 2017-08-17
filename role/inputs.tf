@@ -102,7 +102,10 @@ variable "default-readonly-policy" {
         "sqs:GetQueueAttributes",
         "sqs:ListQueues",
         "storagegateway:List*",
-        "storagegateway:Describe*"
+        "storagegateway:Describe*",
+        "workspaces:Describe*",
+        "kinesis:Describe*",
+        "kinesis:List*"
       ],
       "Resource": "*"
     }POLICY
