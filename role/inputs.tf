@@ -65,6 +65,8 @@ variable "default-readonly-policy" {
         "dynamodb:DescribeTable",
         "dynamodb:List*",
         "ec2:Describe*",
+        "ecs:Describe*",
+        "ecs:List*",
         "elasticache:Describe*",
         "elasticache:ListTagsForResource",
         "elasticbeanstalk:Check*",
