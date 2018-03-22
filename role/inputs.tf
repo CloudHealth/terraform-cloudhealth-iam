@@ -65,6 +65,7 @@ variable "default-readonly-policy" {
         "dynamodb:DescribeTable",
         "dynamodb:List*",
         "ec2:Describe*",
+        "ec2:GetReservedInstancesExchangeQuote",
         "ecs:Describe*",
         "ecs:List*",
         "elasticache:Describe*",
