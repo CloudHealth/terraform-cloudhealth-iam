@@ -82,6 +82,8 @@ variable "default-readonly-policy" {
         "elasticfilesystem:DescribeTags",
         "es:Describe*",
         "es:List*",
+        "firehose:ListDeliveryStreams",
+        "firehose:DescribeDeliveryStream",
         "iam:List*",
         "iam:Get*",
         "iam:GenerateCredentialReport",
