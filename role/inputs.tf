@@ -34,9 +34,8 @@ variable "additional-policy" {
   default = ""
 }
 
-
 variable "default-readonly-policy" {
-    default = <<POLICY
+  default = <<POLICY
     {
       "Effect": "Allow",
       "Action": [
