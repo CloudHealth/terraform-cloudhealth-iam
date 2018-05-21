@@ -61,6 +61,7 @@ variable "default-readonly-policy" {
         "config:List*",
         "cur:Describe*",
         "cur:PutReportDefinition",
+        "dms:Describe*",
         "dynamodb:DescribeTable",
         "dynamodb:List*",
         "ec2:Describe*",
