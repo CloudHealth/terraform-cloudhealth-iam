@@ -94,6 +94,8 @@ variable "default-readonly-policy" {
         "rds:Describe*",
         "rds:ListTagsForResource",
         "s3:List*",
+        "s3:GetBucketAcl",
+        "s3:GetBucketPolicy",
         "s3:GetBucketTagging",
         "s3:GetBucketLocation",
         "s3:GetBucketLogging",
