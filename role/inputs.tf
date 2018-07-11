@@ -104,6 +104,8 @@ variable "default-readonly-policy" {
         "s3:GetBucketLogging",
         "s3:GetBucketVersioning",
         "s3:GetBucketWebsite",
+        "sagemaker:Describe*",
+        "sagemaker:List*",
         "sdb:GetAttributes",
         "sdb:List*",
         "ses:Get*",
