@@ -64,6 +64,22 @@ data "template_file" "default-s3-config-bucket-policy" {
   }
 }
 
+data "template_file" "default-s3-ecs-bucket-policy" {
+  template = <<POLICY
+{
+          "Effect": "Allow",
+          "Action": [
+            "s3:Get*",
+            "s3:List*"
+          ],
+          "Resource": [ "arn:aws:s3:::$${s3-ecs-bucket}", "arn:aws:s3:::$${s3-ecs-bucket}/*" ]
+        }POLICY
+
+  vars {
+    s3-ecs-bucket = "${var.s3-ecs-bucket}"
+  }
+}
+
 resource "aws_iam_role" "cht_iam_role" {
   name = "${var.role-name}"
   path = "/"
@@ -104,6 +120,7 @@ resource "aws_iam_policy" "cht_iam_policy" {
     ${var.s3-cloudtrail-bucket == "" ? "" : format(",%s", data.template_file.default-s3-cloudtrail-bucket-policy.rendered)}
     ${var.s3-cur-bucket == "" ? "" : format(",%s", data.template_file.default-s3-cur-bucket-policy.rendered)}
     ${var.s3-config-bucket == "" ? "" : format(",%s", data.template_file.default-s3-config-bucket-policy.rendered)}
+    ${var.s3-ecs-bucket == "" ? "" : format(",%s", data.template_file.default-s3-ecs-bucket-policy.rendered)}
     ${var.automated-ri-modification-enabled ? format(",%s", var.default-reservation-policy) : ""}
     ${var.automated-actions-enabled ? format(",%s", var.default-actions-policy) : ""}
     ${var.additional-policy == "" ? "" : format(",%s", var.additional-policy)}
