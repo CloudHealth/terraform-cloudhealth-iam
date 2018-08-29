@@ -22,6 +22,10 @@ variable "s3-config-bucket" {
   default = ""
 }
 
+variable "s3-ecs-bucket" {
+  default = ""
+}
+
 variable "automated-ri-modification-enabled" {
   default = false
 }
