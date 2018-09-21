@@ -95,6 +95,7 @@ variable "default-readonly-policy" {
         "kms:GetKeyRotationStatus",
         "kms:ListKeys",
         "lambda:List*",
+        "logs:Describe*",
         "redshift:Describe*",
         "route53:Get*",
         "route53:List*",
