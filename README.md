@@ -37,6 +37,11 @@ Inputs
     <td>S3 bucket location for AWS Config data (optional)</td>
   </tr>
   <tr>
+    <td><tt>s3-ecs-bucket</tt></td>
+    <td>String</td>
+    <td>S3 bucket location for Elastic Container Service event stream data (optional)</td>
+  </tr>
+  <tr>
     <td><tt>automated-ri-modification-enabled</tt></td>
     <td>Boolean</td>
     <td>Additional permissions for enabling automated RI modification (default: false)</td>
@@ -70,6 +75,11 @@ Outputs
     <td><tt>external-id</tt></td>
     <td>String</td>
     <td>IAM Role External ID assigned in CloudHealth platform</td>
+  </tr>
+  <tr>
+    <td><tt>cloudhealth-policy-arn</tt></td>
+    <td>String</td>
+    <td>IAM Policy ARN created by the module</td>
   </tr>
 </table>
 
