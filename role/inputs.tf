@@ -54,6 +54,7 @@ variable "default-readonly-policy" {
         "cloudformation:GetTemplate",
         "cloudfront:Get*",
         "cloudfront:List*",
+        "cloudtrail:Get*",
         "cloudtrail:DescribeTrails",
         "cloudtrail:ListTags",
         "cloudwatch:Describe*",
