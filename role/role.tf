@@ -24,7 +24,7 @@ data "template_file" "default-s3-cloudtrail-bucket-policy" {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${s3-cloudtrail-bucket}", "arn:aws:s3:::$${s3-cloudtrail-bucket}/*" ]
+          "Resource": [ "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-cloudtrail-bucket}", "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-cloudtrail-bucket}/*" ]
         }POLICY
 
   vars {
@@ -56,7 +56,7 @@ data "template_file" "default-s3-config-bucket-policy" {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${s3-config-bucket}", "arn:aws:s3:::$${s3-config-bucket}/*" ]
+          "Resource": [ "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-config-bucket}", "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-config-bucket}/*" ]
         }POLICY
 
   vars {
@@ -72,15 +72,21 @@ data "template_file" "default-s3-ecs-bucket-policy" {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${s3-ecs-bucket}", "arn:aws:s3:::$${s3-ecs-bucket}/*" ]
+          "Resource": [ "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-ecs-bucket}", "arn:${var.gov_cloud ? var.awsgov_prefix : var.aws_prefix }:s3:::$${s3-ecs-bucket}/*" ]
         }POLICY
 
   vars {
     s3-ecs-bucket = "${var.s3-ecs-bucket}"
   }
 }
+resource "aws_iam_user" "cht_iam_user_govcloud" {
+		count = "${var.enabled == 1 && var.gov_cloud == 1 ? 1 : 0}"
+  	name = "${var.role-name}"
+  	path = "/"
+ 	}
 
 resource "aws_iam_role" "cht_iam_role" {
+  count = "${var.enabled == 1 && var.gov_cloud == 1 ? 1 : 0}"
   name = "${var.role-name}"
   path = "/"
 
@@ -108,6 +114,7 @@ POLICY
 }
 
 resource "aws_iam_policy" "cht_iam_policy" {
+  count = "${var.enabled == 1 && var.gov_cloud == 0 ? 1 : 0}"
   name = "${var.role-name}"
 
   policy = <<POLICY
@@ -129,7 +136,35 @@ resource "aws_iam_policy" "cht_iam_policy" {
 POLICY
 }
 
+resource "aws_iam_policy" "cht_iam_policy_govcloud" {
+  count = "${var.enabled == 1 && var.gov_cloud == 1 ? 1 : 0}"
+  name = "${var.role-name}"
+
+  policy = <<POLICY
+{
+  "Id": "cloudhealth-iam-policy",
+  "Version": "2012-10-17",
+  "Statement": [
+    ${var.default-readonly-policy}
+    ${var.s3-cloudtrail-bucket == "" ? "" : format(",%s", data.template_file.default-s3-cloudtrail-bucket-policy.rendered)}
+    ${var.s3-config-bucket == "" ? "" : format(",%s", data.template_file.default-s3-config-bucket-policy.rendered)}
+    ${var.s3-ecs-bucket == "" ? "" : format(",%s", data.template_file.default-s3-ecs-bucket-policy.rendered)}
+    ${var.automated-ri-modification-enabled ? format(",%s", var.default-reservation-policy) : ""}
+    ${var.automated-actions-enabled ? format(",%s", var.default-actions-policy) : ""}
+    ${var.additional-policy == "" ? "" : format(",%s", var.additional-policy)}
+  ]
+}
+POLICY
+}
+
 resource "aws_iam_role_policy_attachment" "cht_aws_iam_role_policy_attachment" {
-  role       = "${aws_iam_role.cht_iam_role.name}"
-  policy_arn = "${aws_iam_policy.cht_iam_policy.arn}"
+  count = "${var.enabled == 1 && var.gov_cloud == 0 ? 1 : 0}"
+  role       = "${join("", aws_iam_role.cht_iam_role.*.name)}"
+  policy_arn = "${join("", aws_iam_policy.cht_iam_policy.*.arn)}"
+}
+
+resource "aws_iam_user_policy_attachment" "cht_aws_iam_role_policy_attachment" {
+  count = "${var.enabled == 1 && var.gov_cloud == 1 ? 1 : 0}"
+  user       = "${join("",aws_iam_user.cht_iam_user_govcloud.*.name)}"
+  policy_arn = "${join("",aws_iam_policy.cht_iam_policy_govcloud.*.arn)}"
 }
