@@ -7,6 +7,20 @@ variable "enabled" {
   description = "Enable the Resources (work around to enable and disable module)"
 }
 
+variable "gov_cloud" {
+  default = false
+  description = "Enable the Resources (work around to enable and disable module)"
+}
+
+variable "aws_prefix" {
+  description = "The AWS prefix"
+  default     = "aws"
+}
+
+variable "awsgov_prefix" {
+  description = "The AWS GOV prefix"
+  default     = "aws-us-gov"
+}
 
 variable "external-id" {
   default = ""
