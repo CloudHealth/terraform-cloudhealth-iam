@@ -81,6 +81,7 @@ data "template_file" "default-s3-ecs-bucket-policy" {
 }
 
 resource "aws_iam_role" "cht_iam_role" {
+  count = "${var.enabled}"
   name = "${var.role-name}"
   path = "/"
 
@@ -108,6 +109,7 @@ POLICY
 }
 
 resource "aws_iam_policy" "cht_iam_policy" {
+  count = "${var.enabled}"
   name = "${var.role-name}"
 
   policy = <<POLICY
@@ -130,6 +132,7 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "cht_aws_iam_role_policy_attachment" {
+  count = "${var.enabled}"
   role       = "${aws_iam_role.cht_iam_role.name}"
   policy_arn = "${aws_iam_policy.cht_iam_policy.arn}"
 }

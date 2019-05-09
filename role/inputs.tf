@@ -2,6 +2,12 @@ variable "role-name" {
   default = "CloudHealth-IAM-Role"
 }
 
+variable "enabled" {
+  default = true
+  description = "Enable the Resources (work around to enable and disable module)"
+}
+
+
 variable "external-id" {
   default = ""
 }
