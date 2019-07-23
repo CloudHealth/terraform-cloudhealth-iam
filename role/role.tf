@@ -12,7 +12,7 @@ data "template_file" "default-s3-billing-bucket-policy" {
         }
   POLICY
 
-  vars {
+  vars = {
     s3-billing-bucket = "${var.s3-billing-bucket}"
   }
 }
@@ -29,7 +29,7 @@ data "template_file" "default-s3-cloudtrail-bucket-policy" {
         }
   POLICY
 
-  vars {
+  vars = {
     s3-cloudtrail-bucket = "${var.s3-cloudtrail-bucket}"
   }
 }
@@ -46,7 +46,7 @@ data "template_file" "default-s3-cur-bucket-policy" {
         }
   POLICY
 
-  vars {
+  vars = {
     s3-cur-bucket = "${var.s3-cur-bucket}"
   }
 }
@@ -63,7 +63,7 @@ data "template_file" "default-s3-config-bucket-policy" {
         }
   POLICY
 
-  vars {
+  vars = {
     s3-config-bucket = "${var.s3-config-bucket}"
   }
 }
@@ -80,7 +80,7 @@ data "template_file" "default-s3-ecs-bucket-policy" {
         }
   POLICY
 
-  vars {
+  vars = {
     s3-ecs-bucket = "${var.s3-ecs-bucket}"
   }
 }
