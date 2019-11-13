@@ -113,6 +113,7 @@ variable "default-readonly-policy" {
         "s3:GetBucketWebsite",
         "sagemaker:Describe*",
         "sagemaker:List*",
+        "savingsplans:DescribeSavingsPlans",
         "sdb:GetAttributes",
         "sdb:List*",
         "ses:Get*",
