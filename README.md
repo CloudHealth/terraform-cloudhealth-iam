@@ -109,6 +109,11 @@ POLICY
 }
 ```
 
+**NOTE:** You can pin a specific Git tagged version of this module using this notation. Here we're pinning to the tag, 0.0.16:
+```
+    source  = "git::https://github.com/CloudHealth/terraform-cloudhealth-iam.git//role?ref=tags/0.0.16"
+```
+
 Run terraform plan and apply
 ```bash
 terraform plan -target=module.cloudhealth-iam-role
