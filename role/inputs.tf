@@ -105,6 +105,8 @@ variable "default-readonly-policy" {
         "route53:List*",
         "rds:Describe*",
         "rds:ListTagsForResource",
+        "s3:GetAccountPublicAccessBlock",
+        "s3:GetBucketPublicAccessBlock",
         "s3:GetBucketAcl",
         "s3:GetBucketLocation",
         "s3:GetBucketLogging",
