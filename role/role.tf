@@ -13,7 +13,7 @@ data "template_file" "default-s3-billing-bucket-policy" {
   POLICY
 
   vars = {
-    s3-billing-bucket = "${var.s3-billing-bucket}"
+    s3-billing-bucket = var.s3-billing-bucket
   }
 }
 
@@ -30,7 +30,7 @@ data "template_file" "default-s3-cloudtrail-bucket-policy" {
   POLICY
 
   vars = {
-    s3-cloudtrail-bucket = "${var.s3-cloudtrail-bucket}"
+    s3-cloudtrail-bucket = var.s3-cloudtrail-bucket
   }
 }
 
@@ -47,7 +47,7 @@ data "template_file" "default-s3-cur-bucket-policy" {
   POLICY
 
   vars = {
-    s3-cur-bucket = "${var.s3-cur-bucket}"
+    s3-cur-bucket = var.s3-cur-bucket
   }
 }
 
@@ -64,7 +64,7 @@ data "template_file" "default-s3-config-bucket-policy" {
   POLICY
 
   vars = {
-    s3-config-bucket = "${var.s3-config-bucket}"
+    s3-config-bucket = var.s3-config-bucket
   }
 }
 
@@ -81,7 +81,7 @@ data "template_file" "default-s3-ecs-bucket-policy" {
   POLICY
 
   vars = {
-    s3-ecs-bucket = "${var.s3-ecs-bucket}"
+    s3-ecs-bucket = var.s3-ecs-bucket
   }
 }
 
@@ -135,6 +135,6 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "cht_aws_iam_role_policy_attachment" {
-  role = aws_iam_role.cht_iam_role.name
+  role       = aws_iam_role.cht_iam_role.name
   policy_arn = aws_iam_policy.cht_iam_policy.arn
 }
