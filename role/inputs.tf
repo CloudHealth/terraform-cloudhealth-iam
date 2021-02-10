@@ -100,6 +100,7 @@ variable "default-readonly-policy" {
         "logs:Describe*",
         "organizations:ListAccounts",
         "organizations:ListTagsForResource",
+        "organizations:DescribeOrganization",
         "redshift:Describe*",
         "route53:Get*",
         "route53:List*",
