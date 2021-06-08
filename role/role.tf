@@ -88,6 +88,7 @@ data "template_file" "default-s3-ecs-bucket-policy" {
 resource "aws_iam_role" "cht_iam_role" {
   name = var.role-name
   path = "/"
+  tags = var.tags
 
   assume_role_policy = <<POLICY
 {
@@ -114,6 +115,7 @@ POLICY
 
 resource "aws_iam_policy" "cht_iam_policy" {
   name = var.role-name
+  tags = var.tags
 
   policy = <<POLICY
 {
