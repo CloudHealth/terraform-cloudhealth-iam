@@ -1,67 +1,28 @@
 #Setting up internal variables
 
 data "template_file" "default-s3-billing-bucket-policy" {
-  template = <<POLICY
-{
-          "Effect": "Allow",
-          "Action": [
-            "s3:Get*",
-            "s3:List*"
-          ],
-          "Resource": [ "arn:aws:s3:::$${s3-billing-bucket}", "arn:aws:s3:::$${s3-billing-bucket}/*" ]
-        }
-  POLICY
-
+  template = "${file(default-s3-billing-bucket-policy.json)}"
   vars = {
     s3-billing-bucket = var.s3-billing-bucket
   }
 }
 
 data "template_file" "default-s3-cloudtrail-bucket-policy" {
-  template = <<POLICY
-{
-          "Effect": "Allow",
-          "Action": [
-            "s3:Get*",
-            "s3:List*"
-          ],
-          "Resource": [ "arn:aws:s3:::$${s3-cloudtrail-bucket}", "arn:aws:s3:::$${s3-cloudtrail-bucket}/*" ]
-        }
-  POLICY
-
+  template = "${file(default-s3-cloudtrail-bucket-policy.json)}"
   vars = {
     s3-cloudtrail-bucket = var.s3-cloudtrail-bucket
   }
 }
 
 data "template_file" "default-s3-cur-bucket-policy" {
-  template = <<POLICY
-{
-          "Effect": "Allow",
-          "Action": [
-            "s3:Get*",
-            "s3:List*"
-          ],
-          "Resource": [ "arn:aws:s3:::$${s3-cur-bucket}", "arn:aws:s3:::$${s3-cur-bucket}/*" ]
-        }
-  POLICY
-
+  template = "${file(default-s3-cur-bucket-policy.json)}"
   vars = {
     s3-cur-bucket = var.s3-cur-bucket
   }
 }
 
 data "template_file" "default-s3-config-bucket-policy" {
-  template = <<POLICY
-{
-          "Effect": "Allow",
-          "Action": [
-            "s3:Get*",
-            "s3:List*"
-          ],
-          "Resource": [ "arn:aws:s3:::$${s3-config-bucket}", "arn:aws:s3:::$${s3-config-bucket}/*" ]
-        }
-  POLICY
+  template = "${file(default-s3-config-bucket-policy.json)}"
 
   vars = {
     s3-config-bucket = var.s3-config-bucket
@@ -69,17 +30,7 @@ data "template_file" "default-s3-config-bucket-policy" {
 }
 
 data "template_file" "default-s3-ecs-bucket-policy" {
-  template = <<POLICY
-{
-          "Effect": "Allow",
-          "Action": [
-            "s3:Get*",
-            "s3:List*"
-          ],
-          "Resource": [ "arn:aws:s3:::$${s3-ecs-bucket}", "arn:aws:s3:::$${s3-ecs-bucket}/*" ]
-        }
-  POLICY
-
+  template = "${file(default-s3-ecs-bucket-policy.json)}"
   vars = {
     s3-ecs-bucket = var.s3-ecs-bucket
   }
@@ -89,27 +40,8 @@ resource "aws_iam_role" "cht_iam_role" {
   name = var.role-name
   path = "/"
 
-  assume_role_policy = <<POLICY
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Condition": {
-                "StringEquals": {
-                    "sts:ExternalId": "${var.external-id}"
-                }
-            },
-            "Principal": {
-                "AWS": "arn:aws:iam::454464851268:root"
-            },
-            "Action": [
-                "sts:AssumeRole"
-            ]
-        }
-    ]
-}
-POLICY
+  assume_role_policy = "${file(cht_iam_role.json)}"
+
 }
 
 resource "aws_iam_policy" "cht_iam_policy" {

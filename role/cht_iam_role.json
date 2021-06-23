@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "${var.external-id}"
+                }
+            },
+            "Principal": {
+                "AWS": "arn:aws:iam::454464851268:root"
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+        }
+    ]
+}
