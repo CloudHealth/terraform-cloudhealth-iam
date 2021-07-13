@@ -59,7 +59,7 @@ Inputs
   <tr>
     <td><tt>tags</tt></td>
     <td>Map</td>
-    <td> A map of tags to assign to the taggble resources. (optional)</td>
+    <td> A map of tags to assign to the taggable resources. (optional)</td>
   </tr>
 </table>
 
