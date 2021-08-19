@@ -167,7 +167,3 @@ variable "default-actions-policy" {
     }
   POLICY
 }
-
-variable "tags" {
-  default = {}
-}

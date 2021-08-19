@@ -56,11 +56,6 @@ Inputs
     <td>String</td>
     <td>Additional policy to associate with IAM Role (optional)</td>
   </tr>
-  <tr>
-    <td><tt>tags</tt></td>
-    <td>Map</td>
-    <td> A map of tags to assign to the taggable resources. (optional)</td>
-  </tr>
 </table>
 
 Outputs
