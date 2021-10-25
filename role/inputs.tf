@@ -90,6 +90,7 @@ variable "default-readonly-policy" {
         "firehose:DescribeDeliveryStream",
         "iam:List*",
         "iam:Get*",
+        "iam:SimulateCustomPolicy",
         "iam:GenerateCredentialReport",
         "kinesis:Describe*",
         "kinesis:List*",
