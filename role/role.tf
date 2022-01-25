@@ -8,7 +8,7 @@ locals {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${var.s3-billing-bucket}", "arn:aws:s3:::$${var.s3-billing-bucket}/*" ]
+          "Resource": [ "arn:aws:s3:::${var.s3-billing-bucket}", "arn:aws:s3:::${var.s3-billing-bucket}/*" ]
         }
   POLICY
 
@@ -19,7 +19,7 @@ locals {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${var.s3-cloudtrail-bucket}", "arn:aws:s3:::$${var.s3-cloudtrail-bucket}/*" ]
+          "Resource": [ "arn:aws:s3:::${var.s3-cloudtrail-bucket}", "arn:aws:s3:::${var.s3-cloudtrail-bucket}/*" ]
         }
   POLICY
 
@@ -30,7 +30,7 @@ locals {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${var.s3-cur-bucket}", "arn:aws:s3:::$${var.s3-cur-bucket}/*" ]
+          "Resource": [ "arn:aws:s3:::${var.s3-cur-bucket}", "arn:aws:s3:::${var.s3-cur-bucket}/*" ]
         }
   POLICY
 
@@ -41,7 +41,7 @@ locals {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${var.s3-config-bucket}", "arn:aws:s3:::$${var.s3-config-bucket}/*" ]
+          "Resource": [ "arn:aws:s3:::${var.s3-config-bucket}", "arn:aws:s3:::${var.s3-config-bucket}/*" ]
         }
   POLICY
 
@@ -52,7 +52,7 @@ locals {
             "s3:Get*",
             "s3:List*"
           ],
-          "Resource": [ "arn:aws:s3:::$${var.s3-ecs-bucket}", "arn:aws:s3:::$${var.s3-ecs-bucket}/*" ]
+          "Resource": [ "arn:aws:s3:::${var.s3-ecs-bucket}", "arn:aws:s3:::${var.s3-ecs-bucket}/*" ]
         }
   POLICY
 }
