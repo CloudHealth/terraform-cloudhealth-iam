@@ -71,6 +71,8 @@ variable "default-readonly-policy" {
         "dynamodb:List*",
         "ec2:Describe*",
         "ec2:GetReservedInstancesExchangeQuote",
+        "ec2:PurchaseReservedInstancesOffering",
+        "ec2:AcceptReservedInstancesExchangeQuote", #adding permission to sync the tf code
         "ecs:List*",
         "ecs:Describe*",
         "elasticache:Describe*",
