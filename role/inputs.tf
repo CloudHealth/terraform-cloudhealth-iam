@@ -44,8 +44,6 @@ variable "default-readonly-policy" {
       "Effect": "Allow",
       "Action": [
         "autoscaling:Describe*",
-        "aws-portal:ViewBilling",
-        "aws-portal:ViewUsage",
         "cloudformation:ListStacks",
         "cloudformation:ListStackResources",
         "cloudformation:DescribeStacks",
