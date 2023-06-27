@@ -171,3 +171,8 @@ variable "default-actions-policy" {
 variable "tags" {
   default = {}
 }
+
+variable "permissions_boundary" {
+  type = string
+  default = false
+}

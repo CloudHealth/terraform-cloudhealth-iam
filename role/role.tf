@@ -87,6 +87,7 @@ data "template_file" "default-s3-ecs-bucket-policy" {
 
 resource "aws_iam_role" "cht_iam_role" {
   name = var.role-name
+  permissions_boundary = var.permissions_boundary
   path = "/"
   tags = var.tags
 
