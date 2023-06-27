@@ -174,5 +174,5 @@ variable "tags" {
 
 variable "permissions_boundary" {
   type = string
-  default = false
+  default = ""
 }
