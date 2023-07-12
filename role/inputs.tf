@@ -166,3 +166,12 @@ variable "default-actions-policy" {
     }
   POLICY
 }
+
+variable "tags" {
+  default = {}
+}
+
+variable "permissions_boundary" {
+  type = string
+  default = ""
+}
